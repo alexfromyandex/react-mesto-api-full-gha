@@ -5,7 +5,7 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/Sas-not-g/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
@@ -14,3 +14,4 @@ IP-адрес 62.84.114.31
 Frontend https://alexsng.mesto.nomoredomainsmonster.ru
 
 Backend https://api.alexsng.mesto.nomoredomainsmonster.ru
+
