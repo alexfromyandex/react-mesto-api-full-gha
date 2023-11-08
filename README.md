@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 62.84.114.31
 
-Frontend https://...
+Frontend https://alexsng.mesto.nomoredomainsmonster.ru
 
-Backend https://...
+Backend https://api.alexsng.mesto.nomoredomainsmonster.ru
