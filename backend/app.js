@@ -11,7 +11,7 @@ const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');
 const { signinValidation, signupValidation } = require('./middlewares/validators');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
+const { allowedCors, DEFAULT_ALLOWED_METHODS } = require('./middlewares/cors');
 
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 100 });
 
@@ -27,7 +27,21 @@ app.use(limiter);
 app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
-app.use(cors);
+
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  const { method } = req;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+    if (method === 'OPTIONS') {
+      res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+      const requestHeaders = req.headers['access-control-request-headers'];
+      res.header('Access-Control-Allow-Headers', requestHeaders);
+      return res.end();
+    }
+  }
+  return next();
+});
 
 app.post('/signin', signinValidation, login);
 app.post('/signup', signupValidation, createUser);
