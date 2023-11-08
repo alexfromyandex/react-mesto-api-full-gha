@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 62.84.114.31
+IP 62.84.114.31
 
 Frontend https://alexsng.mesto.nomoredomainsmonster.ru
 
