@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
     }
   } catch (err) {
     if (err.name === 'JsonWebTokenError') {
-      throw new UnauthorizedError('Необходима авторизация');
+      throw new UnauthorizedError('плохой токен'); // Необходима авторизация
     }
     next(err);
   }
