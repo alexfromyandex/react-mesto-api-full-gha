@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
   try {
     payload = jwt.verify(jwtToken, JWT_SECRET);
     if (!payload) {
-      throw new UnauthorizedError('Необходима авторизация');
+      throw new UnauthorizedError(`${jwtToken}`);
     }
   } catch (err) {
     if (err.name === 'JsonWebTokenError') {
