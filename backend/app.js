@@ -18,9 +18,10 @@ const limiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 100 });
 const { PORT = 3000 } = process.env;
 const app = express();
 
-mongoose.connect((process.env.MONGO_DB), {
+mongoose.connect(process.env.MONGO_DB, {
   useNewUrlParser: true,
 });
+console.log(typeof (process.env.MONGO_DB));
 
 app.use(cors({ credentials: true, origin: 'https://alexsng.mesto.nomoredomainsmonster.ru' }));
 app.use(helmet());
