@@ -38,7 +38,7 @@ module.exports.createUser = (req, res, next) => {
 module.exports.getAllUsers = (req, res, next) => {
   User.find({})
     .then((users) => res.status(200).send({ data: users }))
-    .catch(next);
+    .catch((err) => next(new NotFoundError(err.message)));
 };
 
 module.exports.getUser = (req, res, next) => {
