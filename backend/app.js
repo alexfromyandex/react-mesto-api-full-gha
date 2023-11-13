@@ -16,7 +16,7 @@ const UnauthorizedError = require('./errors/UnauthorizedError');
 
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 100 });
 
-const error;
+let error = '';
 
 const { PORT = 3000 } = process.env;
 const { MONGO_DB = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
@@ -24,10 +24,12 @@ const app = express();
 
 mongoose.connect(MONGO_DB, {
   useNewUrlParser: true,
-}).catch((err) => error = err);
+}).catch((err) => {
+  error = err;
+});
 
-if (error){
-  app.use((req,res,next) => next(new UnauthorizedError(error.message)));
+if (error) {
+  app.use((req, res, next) => next(new UnauthorizedError(error.message)));
 }
 
 console.log(process.env);
