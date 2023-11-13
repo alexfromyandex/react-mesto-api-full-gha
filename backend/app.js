@@ -12,27 +12,16 @@ const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');
 const { signinValidation, signupValidation } = require('./middlewares/validators');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const UnauthorizedError = require('./errors/UnauthorizedError');
 
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 100 });
 
-let error = '';
-
 const { PORT = 3000 } = process.env;
-const { MONGO_DB = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+const { MONGO_DB } = process.env;
 const app = express();
 
 mongoose.connect(MONGO_DB, {
   useNewUrlParser: true,
-}).catch((err) => {
-  error = err;
 });
-
-if (error) {
-  app.use((req, res, next) => next(new UnauthorizedError(error.message)));
-}
-
-console.log(process.env);
 
 app.use(cors({ credentials: true, origin: 'https://alexsng.mesto.nomoredomainsmonster.ru' }));
 app.use(helmet());
