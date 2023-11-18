@@ -15,10 +15,11 @@ module.exports = (req, res, next) => {
     }
   } catch (err) {
     if (err.name === 'JsonWebTokenError') {
-      throw new UnauthorizedError('Необходима авторизация');
+      next(new UnauthorizedError('Необходима авторизация'));
     }
-    next();
+    next(new UnauthorizedError('Произошла ошибка'));
   }
+
   req.user = payload;
 
   next();

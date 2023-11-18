@@ -52,7 +52,7 @@ module.exports.getUser = (req, res, next) => {
         return next(new BadRequestError('Введён некорректный id пользователя'));
       }
 
-      return next(err);
+      return next();
     });
 };
 
@@ -97,16 +97,16 @@ module.exports.updateAvatar = (req, res, next) => {
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
   User.findUserByCredentials(email, password)
-    .then((user) => { // залогинился
+    .then((user) => {
       const userData = { ...user };
       delete userData._doc.password;
       const token = jwt.sign({ _id: user._id }, process.env.NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
-      res.cookie('jwt', token, { // присвоил токен куки
+      res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         secure: true,
         sameSite: 'None',
-      }).status(200).send({ user: userData._doc, orig: req.headers.origin }); // вернул юзера
+      }).status(200).send({ user: userData._doc });
     })
     .catch((err) => {
       if (err.message === 'Неправильные почта или пароль') {
@@ -118,7 +118,7 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.getMyInfo = (req, res, next) => {
-  User.findOne({ _id: req.user._id }).orFail(new Error('Not found'))
+  User.findOne({ _id: req.user._id }).orFail(new NotFoundError('Not found'))
     .then((user) => {
       res.status(200).send({ userData: user });
     })
@@ -127,6 +127,6 @@ module.exports.getMyInfo = (req, res, next) => {
         return next(new NotFoundError('Пользователь не найден'));
       }
 
-      return next(err);
+      return next();
     });
 };
