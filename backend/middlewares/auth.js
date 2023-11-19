@@ -17,7 +17,8 @@ module.exports = (req, res, next) => {
     if (err.name === 'JsonWebTokenError') {
       next(new UnauthorizedError('Необходима авторизация'));
     }
-    next(new UnauthorizedError('Произошла ошибка'));
+    console.log(req.headers);
+    next(new UnauthorizedError(`${req.cookies.jwt}`));
   }
 
   req.user = payload;
