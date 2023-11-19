@@ -16,7 +16,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 100 });
 
 const { PORT = 3000 } = process.env;
-const { MONGO_DB } = process.env;
+const { MONGO_DB = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 const app = express();
 
 mongoose.connect(MONGO_DB, {
