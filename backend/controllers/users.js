@@ -104,13 +104,13 @@ module.exports.login = (req, res, next) => {
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
-        secure: true,
+        secure: false,
         sameSite: 'None',
       }).status(200).send({ user: userData._doc });
     })
     .catch((err) => {
       if (err.message === 'Неправильные почта или пароль') {
-        return next(new UnauthorizedError('Ошибка авторизации'));
+        return next(new UnauthorizedError(err.message));
       }
 
       return next(err);

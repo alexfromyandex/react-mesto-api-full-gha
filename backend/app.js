@@ -23,12 +23,18 @@ mongoose.connect(MONGO_DB, {
   useNewUrlParser: true,
 });
 
-app.use(cors({ credentials: true, origin: ['https://alexsng.mesto.nomoredomainsmonster.ru', 'http://localhost:3000'] }));
+app.use(cors({ credentials: true, origin: ['https://alexsng.mesto.nomoredomainsmonster.ru', 'http://localhost:3000', 'http://alexsng.mesto.nomoredomainsmonster.ru'] }));
 app.use(helmet());
 app.use(limiter);
 app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', signinValidation, login);
 app.post('/signup', signupValidation, createUser);
