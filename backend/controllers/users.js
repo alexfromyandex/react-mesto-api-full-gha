@@ -52,7 +52,7 @@ module.exports.getUser = (req, res, next) => {
         return next(new BadRequestError('Введён некорректный id пользователя'));
       }
 
-      return next();
+      return next(err);
     });
 };
 
@@ -104,7 +104,7 @@ module.exports.login = (req, res, next) => {
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
-        secure: false,
+        secure: true,
         sameSite: 'None',
       }).status(200).send({ user: userData._doc });
     })
@@ -127,6 +127,6 @@ module.exports.getMyInfo = (req, res, next) => {
         return next(new NotFoundError('Пользователь не найден'));
       }
 
-      return next();
+      return next(err);
     });
 };
