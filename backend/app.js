@@ -23,7 +23,7 @@ mongoose.connect(MONGO_DB, {
   useNewUrlParser: true,
 });
 
-app.use(cors({ credentials: true, origin: 'https://alexsng.mesto.nomoredomainsmonster.ru' }));
+app.use(cors({ credentials: true, origin: ['https://alexsng.mesto.nomoredomainsmonster.ru', 'http://localhost:3000', 'http://alexsng.mesto.nomoredomainsmonster.ru'] }));
 app.use(helmet());
 app.use(limiter);
 app.use(express.json());
