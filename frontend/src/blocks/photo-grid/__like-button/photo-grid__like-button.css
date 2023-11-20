@@ -1,0 +1,12 @@
+.photo-grid__like-button {
+  transition: opacity linear 0.1s;
+  background: none;
+  border: none;
+  background-image: url('../../../images/like_disabled.svg');
+  padding: 9.5px 11px;
+  cursor: pointer;
+}
+
+.photo-grid__like-button:hover {
+  opacity: 0.5;
+}

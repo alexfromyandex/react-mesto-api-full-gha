@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+  width: 880px;
+  padding: 45px calc((100% - 880px) / 2) 0;
+  align-items: center;
+  flex-direction: column;
+  background-color: #000000;
+  margin: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .root {
+    width: 320px;
+    padding: 0 calc((100% - 320px) / 2);
+  }
+}

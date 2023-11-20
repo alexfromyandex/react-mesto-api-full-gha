@@ -1,0 +1,16 @@
+.profile__button_type_add {
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  background-image: url('../../../../images/add_plus.svg');
+  background-position: center;
+  background-size: 22px;
+  background-repeat: no-repeat;
+  padding: 25px 75px;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile__button_type_add {
+    padding: 23px 139.5px;
+    background-size: 16px;
+  }
+}

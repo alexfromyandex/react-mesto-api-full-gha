@@ -1,0 +1,18 @@
+.popup__button_type_cancel {
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  padding: 16px;
+  border: none;
+  background: none;
+  background-image: url('../../../../images/cancel_button.svg');
+  background-size: contain;
+}
+
+@media screen and (max-width: 1279px) {
+  .popup__button_type_cancel {
+    padding: 10px;
+    top: -36px;
+    right: 0;
+  }
+}

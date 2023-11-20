@@ -1,0 +1,16 @@
+.header__togglePage {
+  color: white;
+  text-decoration: none;
+  margin: 0;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+  align-self: last baseline;
+  opacity: 1;
+  transition: opacity linear 0.1s;
+}
+
+.header__togglePage:hover {
+  opacity: 0.6;
+}

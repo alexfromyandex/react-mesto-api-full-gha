@@ -1,0 +1,8 @@
+.authPage__container {
+  width: 100%;
+  min-height: calc(100vh - 119.86px);
+  max-width: 358px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

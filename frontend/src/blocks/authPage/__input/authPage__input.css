@@ -1,0 +1,22 @@
+.authPage__input {
+  width: 100%;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  box-sizing: border-box;
+  border: none;
+  background-color: black;
+  color: #ccc;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  outline: none;
+}
+
+.authPage__input:last-of-type {
+  margin: 0 0 216px;
+}
+
+::placeholder {
+  color: #ccc;
+}

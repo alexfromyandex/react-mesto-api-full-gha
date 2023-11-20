@@ -1,0 +1,7 @@
+.photo-grid__description-bar {
+  background-color: #ffffff;
+  display: flex;
+  padding: 23px 21px 20px;
+  justify-content: space-between;
+  align-items: center;
+}

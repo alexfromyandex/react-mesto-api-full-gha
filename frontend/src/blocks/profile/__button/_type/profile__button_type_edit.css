@@ -1,0 +1,10 @@
+.profile__button_type_edit {
+  padding: 12px 12px;
+  background-image: url('../../../../images/Edit-Button.svg');
+}
+
+@media screen and (max-width: 1279px) {
+  .profile__button_type_edit {
+    padding: 9px 9px;
+  }
+}

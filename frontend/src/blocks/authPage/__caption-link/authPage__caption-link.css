@@ -1,0 +1,10 @@
+.authPage__caption-link {
+  text-decoration: none;
+  color: white;
+  opacity: 1;
+  transition: opacity linear 0.1s;
+}
+
+.authPage__caption-link:hover {
+  opacity: 0.6;
+}
